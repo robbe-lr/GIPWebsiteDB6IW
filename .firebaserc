@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gip6iw2020-2021": {
+      "hosting": {
+        "booktest": [
+          "gip6iw2020-2021"
+        ]
+      }
+    }
+  }
+}

@@ -14,7 +14,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
-  user;
   uid;
 
   task: AngularFireUploadTask;
@@ -23,11 +22,7 @@ export class UploadTaskComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, public afAuth: AngularFireAuth) {
-    this.user = afAuth.currentUser;
-    console.log('user: ', this.user)
-    this.uid  = this.user.uid;
-    console.log('uid: ', this.uid)
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore) {
 
   }
 
@@ -35,12 +30,11 @@ export class UploadTaskComponent implements OnInit {
     this.uid = localStorage.getItem('uid');
     console.log('uidlocal:', this.uid);
     this.startUpload();
-    console.log('in', this.user)
   }
 
   startUpload() {
-    console.log(this.user);
 
+    console.log(this.file.type);
     // The storage path
     const path = `test/${this.uid}/${Date.now()}_${this.file.name}`;
 

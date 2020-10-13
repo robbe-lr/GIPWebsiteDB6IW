@@ -14,6 +14,9 @@ import { SuperSecretComponent } from './super-secret/super-secret.component';
 import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './uploader/uploader.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
     DropzoneDirective,
     UploaderComponent,
     UploadTaskComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
+    BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

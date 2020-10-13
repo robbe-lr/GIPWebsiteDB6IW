@@ -5,11 +5,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.scss']
 })
-export class UploaderComponent {
+export class UploaderComponent implements OnInit{
+
+  name: string = 'Robbe';
   
   isHovering: boolean;
 
   files: File[] = [];
+
+  ngOnInit() {
+    this.name = localStorage.getItem('userName');
+    console.log(this.name)
+  }
 
   toggleHover(event: boolean) {
     this.isHovering = event;

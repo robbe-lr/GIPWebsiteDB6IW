@@ -38,6 +38,8 @@ export class AuthService {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
     this.user = credential.user;
+    console.log(this.user.displayName);
+    localStorage.setItem('userName', this.user.displayName);
     localStorage.setItem('uid', this.user.uid);
     console.log(this.user);
     return this.updateUserData(credential.user);
@@ -46,6 +48,7 @@ export class AuthService {
   async signOut() {
     await this.afAuth.signOut();
     this.user = null;
+    localStorage.setItem('username', null);
     localStorage.setItem('uid', null);
     return this.router.navigate(['/']);
   }

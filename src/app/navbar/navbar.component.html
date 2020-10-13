@@ -1,0 +1,46 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+    </div>
+
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <!-- <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Log In</strong>
+          </a>
+        </div>
+      </div> -->
+
+        <div *ngIf="auth.user$ | async as user; else login">
+          <div class="buttons" (click)="auth.signOut()">
+            <a class="button is-light">
+              Log uit
+            </a>
+          </div>
+        </div>
+
+        <ng-template #login>
+          <div class="buttons" (click)="auth.googleSignin()">
+            <a class="button is-primary">
+              <strong>Log in</strong>
+            </a>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</nav>

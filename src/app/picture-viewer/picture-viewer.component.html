@@ -1,0 +1,55 @@
+
+
+ <!-- <div *ngIf="downloadURL as url">
+    <h3>Gelukt!</h3>
+    <img [src]="url"><br>
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div>  -->
+
+<!-- <div *ngFor="let file of file$ | async">
+  <h3>{{file.originalName}}</h3>
+  <div>
+    <img [src]="file.downloadURL">
+    <div>
+      <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download deze afbeelding!</a><hr>
+      <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder</button>
+    </div>
+  </div>
+</div> -->
+
+<h3>Afbeeldingen</h3>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'images'">
+    <h4>{{file.originalName}}</h4>
+    <div>
+      <img [src]="file.downloadURL">
+      <div>
+        <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download deze afbeelding!</a><br>
+        <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder deze afbeelding</button><br /> <br />
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<h3>Audio</h3>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'audio'">
+    <h4>{{file.originalName}}</h4>
+    <div>
+      <div>
+        <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download dit fragment!</a><br>
+        <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder dit fragment</button><br /> <br />
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <ul>
+  <li *ngFor="let file of file$ | async">
+    {{file.downloadURL}}
+  </li>
+</ul> -->

@@ -16,6 +16,7 @@ export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
   uid;
+  type;
 
   task: AngularFireUploadTask;
 
@@ -37,8 +38,10 @@ export class UploadTaskComponent implements OnInit {
     var path = '';
     if (this.file.type.localeCompare("image")==1) {
       // The storage path
+      this.type="images"
       path = `test/${this.uid}/images/${Date.now()}_${this.file.name}`;
     } else if (this.file.type.localeCompare("audio") == 1) {
+      this.type = 'audio'
       path = `test/${this.uid}/audio/${Date.now()}_${this.file.name}`;
     } else {
       console.log('file not accepted');
@@ -61,7 +64,7 @@ export class UploadTaskComponent implements OnInit {
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
-        this.db.collection('files').add({ uid: this.uid, downloadURL: this.downloadURL, path });
+        this.db.collection('files').add({ type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
       }),
     );
   }

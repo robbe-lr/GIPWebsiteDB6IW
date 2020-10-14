@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'upload-task',
@@ -18,7 +19,7 @@ export class UploadTaskComponent implements OnInit {
 
   task: AngularFireUploadTask;
 
-  percentage: Observable<number>; 
+  percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL;
 
@@ -33,11 +34,18 @@ export class UploadTaskComponent implements OnInit {
   }
 
   startUpload() {
+    var path = '';
+    if (this.file.type.localeCompare("image")==1) {
+      // The storage path
+      path = `test/${this.uid}/images/${Date.now()}_${this.file.name}`;
+    } else if (this.file.type.localeCompare("audio") == 1) {
+      path = `test/${this.uid}/audio/${Date.now()}_${this.file.name}`;
+    } else {
+      console.log('file not accepted');
+      return;
+    }
 
-    console.log(this.file.type);
-    // The storage path
-    const path = `test/${this.uid}/${Date.now()}_${this.file.name}`;
-
+    console.log('file accepted')
     // Reference to storage bucket
     const ref = this.storage.ref(path);
 
@@ -53,7 +61,7 @@ export class UploadTaskComponent implements OnInit {
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
-        this.db.collection('files').add({uid: this.uid, downloadURL: this.downloadURL, path });
+        this.db.collection('files').add({ uid: this.uid, downloadURL: this.downloadURL, path });
       }),
     );
   }

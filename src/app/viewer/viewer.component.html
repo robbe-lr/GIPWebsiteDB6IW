@@ -23,10 +23,10 @@
   <div *ngIf="file.type == 'images'">
     <h4>{{file.originalName}}</h4>
     <div>
-      <img [src]="file.downloadURL">
+      
       <div>
-        <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download deze afbeelding!</a><br>
-        <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder deze afbeelding</button><br /> <br />
+        <a class=""[href]="file.downloadURL" target="_blank" rel="noopener" [download]="file.originalName" download><img [src]="file.downloadURL"></a><br><br>
+        <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder deze afbeelding</button><br /> <br /><br>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
     <h4>{{file.originalName}}</h4>
     <div>
       <div>
-        <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download dit fragment!</a><br>
+        <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br>
         <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder dit fragment</button><br /> <br />
      
       </div>
@@ -50,6 +50,7 @@
 
 <!-- <ul>
   <li *ngFor="let file of file$ | async">
+    <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Download dit fragment!</a><br>
     {{file.downloadURL}}
   </li>
 </ul> -->

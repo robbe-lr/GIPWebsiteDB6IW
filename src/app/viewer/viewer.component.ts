@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { combineLatest, switchMap } from 'rxjs/operators';
 import { file } from '../models/file';
 
 @Component({
-  selector: 'app-picture-viewer',
-  templateUrl: './picture-viewer.component.html',
-  styleUrls: ['./picture-viewer.component.scss']
+  selector: 'app-viewer',
+  templateUrl: './viewer.component.html',
+  styleUrls: ['./viewer.component.scss']
 })
-export class PictureViewerComponent implements OnInit {
+export class viewerComponent implements OnInit {
 
   fileRef: AngularFirestoreCollection<file>;
   file$: Observable<file[]>
@@ -22,10 +22,19 @@ export class PictureViewerComponent implements OnInit {
 
   constructor(private db: AngularFirestore) {
     this.uid = localStorage.getItem('uid')
-    this.fileRef = this.db.collection('files', ref => ref.where('uid', '==', this.uid));
+    this.fileRef = this.db.collection('files', ref => ref.where('uid', '==', this.uid).where('deleted', '==', false));
     this.file$ = this.fileRef.valueChanges();
   }
   
+  updateUserData(file: file) {
+    const fileRef: AngularFirestoreDocument<file> = this.db.doc(`files/${file.id}`); //TODO id werkt nog niet
+
+    const data = {
+      deleted: true
+    };
+
+    return fileRef.set(data, {merge: true});
+  }
 
   ngOnInit(): void {
   }

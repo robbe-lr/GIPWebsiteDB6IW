@@ -44,8 +44,8 @@ export class UploadTaskComponent implements OnInit {
       this.type = 'audio'
       path = `test/${this.uid}/audio/${Date.now()}_${this.file.name}`;
     } else {
+      path = `test/${this.uid}/file/${Date.now()}_${this.file.name}`;
       console.log('file not accepted');
-      return;
     }
 
     console.log('file accepted')
@@ -64,7 +64,7 @@ export class UploadTaskComponent implements OnInit {
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
 
-        this.db.collection('files').add({ type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
+        this.db.collection('files').add({deleted: false, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
       }),
     );
   }

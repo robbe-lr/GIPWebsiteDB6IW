@@ -17,7 +17,7 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PictureViewerComponent } from './picture-viewer/picture-viewer.component';
+import { viewerComponent } from './viewer/viewer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { PictureViewerComponent } from './picture-viewer/picture-viewer.componen
     UploaderComponent,
     UploadTaskComponent,
     NavbarComponent,
-    PictureViewerComponent,
+    viewerComponent,
   ],
   imports: [
     BrowserModule,

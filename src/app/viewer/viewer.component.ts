@@ -14,6 +14,7 @@ export class viewerComponent implements OnInit {
   fileRef: AngularFirestoreCollection<file>;
   file$: Observable<file[]>
   uid: string;
+  voortoonStatus: boolean;
 
 
   links: string[] = [
@@ -42,5 +43,10 @@ export class viewerComponent implements OnInit {
   delete(link) {
     console.log('deleted: ', link);
   }
+
+  voortoonVerandering() {
+    this.voortoonStatus = !this.voortoonStatus;
+  }
+
 
 }

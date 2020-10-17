@@ -8,4 +8,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
   constructor(public auth: AuthService) { }
+  navIsActive: boolean = false;
+
+  toggleNav() {
+    this.navIsActive = !this.navIsActive
+  }
 }

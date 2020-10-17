@@ -57,6 +57,18 @@
   </div>
 </div>
 
+<h3>Video</h3>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'video'">
+    <h4>{{file.originalName}}</h4>
+        <video controls><source [src]="file.downloadURL"></video><br><br>
+        <!-- <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br> -->
+        <button class="button is-danger" disabled (click)="delete(file.downloadURL)">Verwijder dit fragment</button><br /> <br />
+     
+  </div>
+</div>
+
 <!-- <ul>
   <li *ngFor="let file of file$ | async">
     <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Download dit fragment!</a><br>

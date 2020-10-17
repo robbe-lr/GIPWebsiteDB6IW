@@ -17,6 +17,7 @@ export class UploadTaskComponent implements OnInit {
   @Input() file: File;
   uid;
   type;
+  fileId;
 
   task: AngularFireUploadTask;
 
@@ -36,16 +37,21 @@ export class UploadTaskComponent implements OnInit {
 
   startUpload() {
     var path = '';
-    if (this.file.type.localeCompare("image")==1) {
+    console.log(this.file.type)
+    if (this.file.type.localeCompare("video") == 1) {
+      this.type = "video"
+      path = `userFiles/${this.uid}/video/${Date.now()}_${this.file.name}`
+    } else if (this.file.type.localeCompare("image")==1) {
       // The storage path
       this.type="images"
-      path = `test/${this.uid}/images/${Date.now()}_${this.file.name}`;
+      path = `userFiles/${this.uid}/images/${Date.now()}_${this.file.name}`;
     } else if (this.file.type.localeCompare("audio") == 1) {
       this.type = 'audio'
-      path = `test/${this.uid}/audio/${Date.now()}_${this.file.name}`;
-    } else {
-      path = `test/${this.uid}/file/${Date.now()}_${this.file.name}`;
+      path = `userFiles/${this.uid}/audio/${Date.now()}_${this.file.name}`;
+    } 
+    else {
       console.log('file not accepted');
+      return;
     }
 
     console.log('file accepted')
@@ -63,8 +69,8 @@ export class UploadTaskComponent implements OnInit {
       // The file's download URL
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-
-        this.db.collection('files').add({deleted: false, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
+        this.fileId = this.db.createId();
+        this.db.doc(`files/${this.fileId}`).set({id: this.fileId, deleted: false, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
       }),
     );
   }

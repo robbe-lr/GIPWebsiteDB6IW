@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { combineLatest, switchMap } from 'rxjs/operators';
 import { file } from '../models/file';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-viewer',
@@ -16,22 +18,18 @@ export class viewerComponent implements OnInit {
   uid: string;
   voortoonStatus: boolean;
 
-
-  links: string[] = [
-    'https://firebasestorage.googleapis.com/v0/b/testgip-7aa68.appspot.com/o/test%2Fa42rCLhEEeb2dqzgyBp9v7EZD9e2%2Fimages%2F1602613249575_120764135_669245873726707_351419179207221445_n.jpg?alt=media&token=aaebb21d-af83-49c0-848d-109ce3f7de23',
-    'https://firebasestorage.googleapis.com/v0/b/testgip-7aa68.appspot.com/o/test%2Fa42rCLhEEeb2dqzgyBp9v7EZD9e2%2Fimages%2F1602614015304_120727803_671851006789115_7581724954054999214_n.jpg?alt=media&token=a856cde1-2199-441f-82ad-3bafb37be7b2']
-
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private rtdb: AngularFireDatabase) {
     this.uid = localStorage.getItem('uid')
     this.fileRef = this.db.collection('files', ref => ref.where('uid', '==', this.uid).where('deleted', '==', false));
     this.file$ = this.fileRef.valueChanges();
   }
   
-  updateUserData(file: file) {
-    const fileRef: AngularFirestoreDocument<file> = this.db.doc(`files/${file.id}`); //TODO id werkt nog niet
+  updateFileData(file: file) {
+    const fileRef: AngularFirestoreDocument<file> = this.db.doc(`files/${file.id}`);
 
     const data = {
-      deleted: true
+      deleted: true,
+      deletedAt: firebase.firestore.FieldValue.serverTimestamp()
     };
 
     return fileRef.set(data, {merge: true});
@@ -40,8 +38,9 @@ export class viewerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(link) {
-    console.log('deleted: ', link);
+  delete(file: file) {
+    console.log('deleted: ', file.downloadURL);
+    this.updateFileData(file);
   }
 
   voortoonVerandering() {

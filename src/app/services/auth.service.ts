@@ -55,6 +55,7 @@ export class AuthService {
 
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const userListRef: AngularFirestoreDocument<User> = this.afs.doc(`userlist/${user.id}`)
 
     const data = {
       uid: user.uid,
@@ -63,6 +64,11 @@ export class AuthService {
       photURL: user.photoURL
     };
 
+    const listData= {
+      uid: user.uid,
+      displayName: user.diplayName
+    }
+    userListRef.set(listData, {merge: true});
     return userRef.set(data, {merge: true});
   }
 }

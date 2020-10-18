@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { viewerComponent } from './viewer/viewer.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { viewerComponent } from './viewer/viewer.component';
     UploadTaskComponent,
     NavbarComponent,
     viewerComponent,
+    UserSearchComponent,
   ],
   imports: [
     BrowserModule,

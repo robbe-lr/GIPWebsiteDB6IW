@@ -38,7 +38,7 @@
         <a *ngIf="voortoonStatus" class=""[href]="file.downloadURL" target="_blank" rel="noopener" [download]="file.originalName" download><img [src]="file.downloadURL"></a>
         <a *ngIf="!voortoonStatus" class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Klik hier om de afbeelding te bekijken!</a>
         <br><br>
-        <button class="button is-danger" disabled (click)="delete(file.downloadURL)">Verwijder deze afbeelding</button><br /> <br /><br>
+        <button class="button is-danger" (click)="delete(file)">Verwijder deze afbeelding</button><br /> <br /><br>
       </div>
     </div>
   </div>
@@ -52,10 +52,11 @@
     <h4>{{file.originalName}}</h4>
         <video controls><source [src]="file.downloadURL" type="audio/mpeg"></video><br><br>
         <!-- <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br> -->
-        <button class="button is-danger" disabled (click)="delete(file.downloadURL)">Verwijder dit fragment</button><br /> <br />
+        <button class="button is-danger" (click)="delete(file)">Verwijder dit fragment</button><br /> <br />
      
   </div>
 </div>
+<hr>
 
 <h3>Video</h3>
 
@@ -64,7 +65,7 @@
     <h4>{{file.originalName}}</h4>
         <video controls><source [src]="file.downloadURL"></video><br><br>
         <!-- <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br> -->
-        <button class="button is-danger" disabled (click)="delete(file.downloadURL)">Verwijder dit fragment</button><br /> <br />
+        <button class="button is-danger"  (click)="delete(file)">Verwijder dit fragment</button><br /> <br />
      
   </div>
 </div>

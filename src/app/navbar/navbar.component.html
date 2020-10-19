@@ -8,15 +8,18 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu" [ngClass]="{'is-active': navIsActive}">
-    <!-- <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+    <div class="navbar-start">
+      <a class="navbar-item" (click)="dropZoneLink()">
+        Mijn Drop Zone
+      </a>
+      <a class="navbar-item" (click)="vriendenLink()">
+        Vrienden
       </a>
 
-      <a class="navbar-item">
+      <!-- <a class="navbar-item">
         Documentation
-      </a>
-    </div> -->
+      </a> -->
+    </div>
 
 
     <div class="navbar-end">

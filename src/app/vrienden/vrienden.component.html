@@ -1,0 +1,13 @@
+<input (keyup.enter)="onTextEnter()" class="input is-rounded is-medium is-static" type="email" [(ngModel)]="email"
+  placeholder="Voeg hier de email van de persoon in..."><br><br>
+<button class="button is-primary" (click)="onTextEnter()">Voeg vriend toe!</button>
+
+<div *ngFor="let uids2 of friends$ | async">
+  <div *ngFor="let uid of uids2.uids">
+    <div *ngIf="uid != ownUid">
+      <h3>{{getName(uid)}}</h3>
+
+      <!-- getname slechts eenmaal oproepen -->
+    </div>
+  </div>
+</div>

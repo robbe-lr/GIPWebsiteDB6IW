@@ -19,6 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { viewerComponent } from './viewer/viewer.component';
 import { UserSearchComponent } from './user-search/user-search.component';
+import { VriendenComponent } from './vrienden/vrienden.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { UserSearchComponent } from './user-search/user-search.component';
     NavbarComponent,
     viewerComponent,
     UserSearchComponent,
+    VriendenComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { UserSearchComponent } from './user-search/user-search.component';
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

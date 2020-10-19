@@ -7,5 +7,11 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public myDropZoneIsActive: boolean = true;
+  public vriendenIsActive: boolean = false;
   constructor(public auth: AuthService) {}
+
+  test() {
+    
+  }
 }

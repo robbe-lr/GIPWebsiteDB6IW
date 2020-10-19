@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderComponent implements OnInit{
 
-  name: string = 'Robbe';
+  name: string;
   
   isHovering: boolean;
 

@@ -15,6 +15,7 @@ export class VriendenComponent implements OnInit {
   friendsRef;
   friends$;
   user: User;
+  friendsArray: User[] = [];
 
   constructor(private db: AngularFirestore) { 
     this.ownUid = localStorage.getItem('uid');
@@ -23,6 +24,17 @@ export class VriendenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.friends$.forEach(e => {
+      e.forEach(e => {
+        e.uids.forEach(e => {
+          if(e != this.ownUid) {
+            //this.friendsArray.push(this.getUser(e))
+            this.addUserToArray(e)
+          }
+        });
+      })
+    })
+    //console.log(this.friendsArray)
   }
 
   onTextEnter() {
@@ -45,6 +57,22 @@ export class VriendenComponent implements OnInit {
       console.log(this.user)
     });
     return this.user.displayName
+  }
+
+  getUser (uid) {
+    this.db.doc(`users/${uid}`).valueChanges().forEach(el => {
+      this.user = el;
+      console.log(this.user)
+    });
+    return this.user
+  }
+
+  addUserToArray (uid) {
+    this.db.doc(`users/${uid}`).valueChanges().forEach(el=> {
+      this.user = el;
+      this.friendsArray.push(this.user)
+    })
+    console.log(this.friendsArray)
   }
 
 }

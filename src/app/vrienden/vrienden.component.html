@@ -11,7 +11,10 @@
     </div>
   </div>
 </div> -->
-
+<hr>
 <div *ngFor="let user of friendsArray">
-  <h3>{{user.displayName}}</h3>
+  <a (click)="changeUser(user)"><h3>{{user.displayName}}</h3></a> <br> <button class="button is-danger" (click)="deleteFriend(user)">Verwijder deze vriend</button>
+  <hr>
 </div>
+<hr>
+<app-friendsviewer *ngIf="selectedUid" [uid]="selectedUid" [userName]="selectedName"></app-friendsviewer>

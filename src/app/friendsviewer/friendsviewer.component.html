@@ -1,0 +1,80 @@
+<h1>Bestanden van {{userName}}</h1>
+<br>
+
+<button class="button is-danger" (click)="deleteEverything()">Verwijder alle gegevens</button>
+ <!-- <div *ngIf="downloadURL as url">
+    <h3>Gelukt!</h3>
+    <img [src]="url"><br>
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div>  -->
+
+<!-- <div *ngFor="let file of file$ | async">
+  <h3>{{file.originalName}}</h3>
+  <div>
+    <img [src]="file.downloadURL">
+    <div>
+      <a class="button is-warning"[href]="file.downloadURL" target="_blank" rel="noopener">Download deze afbeelding!</a><hr>
+      <button class="button is-danger" (click)="delete(file.downloadURL)">Verwijder</button>
+    </div>
+  </div>
+</div> -->
+
+<h3>Afbeeldingen</h3>
+
+<!-- <div class="field">
+  <input id="voorSwitch" type="checkbox" name="voorSwitch" class="switch is-rounded">
+  <label for="voorSwitch">Voorvertoning van afbeeldingen</label>
+</div> -->
+
+<div class="field">
+  <input id="voorSwitch" type="checkbox" name="voorSwitch" class="switch is-rounded" (change)="voortoonVerandering()">
+  <label for="voorSwitch">Voorvertoning aanzetten</label>
+</div>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'images'">
+    <h4>{{file.originalName}}</h4>
+    <div>
+      
+      <div>
+        <a *ngIf="voortoonStatus" class=""[href]="file.downloadURL" target="_blank" rel="noopener" [download]="file.originalName" download><img [src]="file.downloadURL"></a>
+        <a *ngIf="!voortoonStatus" class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Klik hier om de afbeelding te bekijken!</a>
+        <br><br>
+        <button class="button is-danger" (click)="delete(file)">Verwijder deze afbeelding</button><br /> <br /><br>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<h3>Audio</h3>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'audio'">
+    <h4>{{file.originalName}}</h4>
+        <video controls><source [src]="file.downloadURL" type="audio/mpeg"></video><br><br>
+        <!-- <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br> -->
+        <button class="button is-danger" (click)="delete(file)">Verwijder dit fragment</button><br /> <br />
+     
+  </div>
+</div>
+<hr>
+
+<h3>Video</h3>
+
+<div *ngFor="let file of file$ | async">
+  <div *ngIf="file.type == 'video'">
+    <h4>{{file.originalName}}</h4>
+        <video controls><source [src]="file.downloadURL"></video><br><br>
+        <!-- <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Luister hier naar dit fragment!</a><br> -->
+        <button class="button is-danger"  (click)="delete(file)">Verwijder dit fragment</button><br /> <br />
+     
+  </div>
+</div>
+
+<!-- <ul>
+  <li *ngFor="let file of file$ | async">
+    <a class="button is-warning" [href]="file.downloadURL" [download]="file.originalName">Download dit fragment!</a><br>
+    {{file.downloadURL}}
+  </li>
+</ul> -->

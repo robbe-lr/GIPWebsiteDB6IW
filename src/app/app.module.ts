@@ -20,7 +20,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { viewerComponent } from './viewer/viewer.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { VriendenComponent } from './vrienden/vrienden.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http'
     viewerComponent,
     UserSearchComponent,
     VriendenComponent,
+    FriendsviewerComponent,
   ],
   imports: [
     BrowserModule,

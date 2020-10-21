@@ -16,6 +16,8 @@ export class VriendenComponent implements OnInit {
   friends$;
   user: User;
   friendsArray: User[] = [];
+  selectedUid: string = null;
+  selectedName: string = null;
 
   constructor(private db: AngularFirestore) { 
     this.ownUid = localStorage.getItem('uid');
@@ -24,6 +26,12 @@ export class VriendenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //console.log(this.friendsArray)
+    this.getFriends();
+  }
+
+  getFriends(){
+
     this.friends$.forEach(e => {
       e.forEach(e => {
         e.uids.forEach(e => {
@@ -34,16 +42,18 @@ export class VriendenComponent implements OnInit {
         });
       })
     })
-    //console.log(this.friendsArray)
   }
 
   onTextEnter() {
     this.ref = this.db.collection('users', ref => ref.where('email', '==', this.email)).valueChanges();
+    
     this.ref.forEach(el => {
       el.forEach(el => {
+      this.friendsArray = []
         this.personsUid = el.uid;
         console.log(el)
-        this.db.collection('friends').add({uids: [this.personsUid, this.ownUid]});
+        //this.db.collection('friends').add({uids: [this.personsUid, this.ownUid]});
+        this.db.doc(`friends/${this.ownUid}${this.personsUid}`).set({uids: [this.personsUid, this.ownUid]})
       })
     })
     
@@ -73,6 +83,19 @@ export class VriendenComponent implements OnInit {
       this.friendsArray.push(this.user)
     })
     console.log(this.friendsArray)
+  }
+
+  changeUser(user: User) {
+    console.log(user);
+    this.selectedName = user.displayName
+    this.selectedUid = user.uid
+  }
+
+  deleteFriend(user: User) {
+    console.log('delete')
+    this.db.doc(`friends/${this.ownUid}${user.uid}`).delete();
+    this.db.doc(`friends/${user.uid}${this.ownUid}`).delete();
+    this.friendsArray = [];
   }
 
 }

@@ -1,0 +1,40 @@
+<div class="dropzone" 
+     dropzone
+     (hovered)="toggleHover($event)"
+     (dropped)="onDrop($event)"
+     [class.hovering]="isHovering">
+
+
+
+
+
+     <h3>{{this.name}}'s Drop Zone</h3>
+     <p>Sleep je bestanden naar hier</p>
+     <div class="file is-primary">
+        <label class="file-label">
+
+
+
+
+        <input class="file-input" type="file" multiple (change)="onDrop($event.target.files)">
+
+
+
+
+          <span class="file-cta">
+            <!-- <span class="file-icon">
+              <i class="fas fa fa-upload"></i>
+            </span> -->
+            <span class="file-label">
+              of kies ze hier....
+            </span>
+          </span>
+        </label>
+      </div>
+</div>
+
+<!-- <h3>Uploads</h3> -->
+
+<div *ngFor="let file of files">
+  <app-upload-task-friends [file]="file" [uid]="uid"></app-upload-task-friends>
+</div>

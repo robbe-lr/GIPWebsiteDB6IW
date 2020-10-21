@@ -21,7 +21,9 @@ import { viewerComponent } from './viewer/viewer.component';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { VriendenComponent } from './vrienden/vrienden.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component'
+import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component';
+import { UploaderFriendsComponent } from './uploader-friends/uploader-friends.component';
+import { UploadTaskFriendsComponent } from './upload-task-friends/upload-task-friends.component'
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component'
     UserSearchComponent,
     VriendenComponent,
     FriendsviewerComponent,
+    UploaderFriendsComponent,
+    UploadTaskFriendsComponent,
   ],
   imports: [
     BrowserModule,

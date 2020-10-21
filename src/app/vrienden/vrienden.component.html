@@ -17,4 +17,6 @@
   <hr>
 </div>
 <hr>
+<h1 *ngIf="selectedUid">{{selectedName}}'s zone</h1>
+<app-uploader-friends *ngIf="selectedUid" [uid]="selectedUid" [name]="selectedName"></app-uploader-friends>
 <app-friendsviewer *ngIf="selectedUid" [uid]="selectedUid" [userName]="selectedName"></app-friendsviewer>

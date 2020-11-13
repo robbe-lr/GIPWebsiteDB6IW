@@ -23,7 +23,9 @@ import { VriendenComponent } from './vrienden/vrienden.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component';
 import { UploaderFriendsComponent } from './uploader-friends/uploader-friends.component';
-import { UploadTaskFriendsComponent } from './upload-task-friends/upload-task-friends.component'
+import { UploadTaskFriendsComponent } from './upload-task-friends/upload-task-friends.component';
+import { TimeLinePageComponent } from './time-line-page/time-line-page.component';
+import { MemoPageComponent } from './memo-page/memo-page.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { UploadTaskFriendsComponent } from './upload-task-friends/upload-task-fr
     FriendsviewerComponent,
     UploaderFriendsComponent,
     UploadTaskFriendsComponent,
+    TimeLinePageComponent,
+    MemoPageComponent,
   ],
   imports: [
     BrowserModule,

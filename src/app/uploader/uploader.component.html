@@ -8,7 +8,7 @@
 
 
 
-     <h3>{{this.name}}'s Drop Zone</h3>
+     <h3>{{this.name}}'s Drop Zone voor {{destination}}</h3>
      <p>Sleep je bestanden naar hier</p>
      <div class="file is-primary">
         <label class="file-label">
@@ -36,5 +36,5 @@
 <!-- <h3>Uploads</h3> -->
 
 <div *ngFor="let file of files">
-  <upload-task [file]="file"></upload-task>
+  <upload-task [file]="file" destination="{{destination}}"></upload-task>
 </div>

@@ -1,11 +1,13 @@
 <app-navbar></app-navbar>
 <div style="background-color:white;">
-  <div *ngIf="auth.user$ | async as user; else login">
+  <!-- <div *ngIf="auth.user$ | async as user; else login">
     <app-vrienden *ngIf="vriendenIsActive"></app-vrienden>
-    <!-- <button class="button" (click)="auth.signOut()">Sign Out</button> -->
-    <uploader *ngIf="myDropZoneIsActive"></uploader>
+     //<button class="button" (click)="auth.signOut()">Sign Out</button> 
+    <uploader *ngIf="myDropZoneIsActive" destination="memo"></uploader>
     <app-viewer *ngIf="myDropZoneIsActive"></app-viewer>
-  </div>
+  </div> -->
+  <app-memo-page></app-memo-page>
+  <app-time-line-page></app-time-line-page>
 
   <ng-template #login>
     <h3>Gelieve in te loggen!</h3>

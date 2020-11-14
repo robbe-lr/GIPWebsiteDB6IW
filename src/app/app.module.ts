@@ -25,7 +25,10 @@ import { FriendsviewerComponent } from './friendsviewer/friendsviewer.component'
 import { UploaderFriendsComponent } from './uploader-friends/uploader-friends.component';
 import { UploadTaskFriendsComponent } from './upload-task-friends/upload-task-friends.component';
 import { TimeLinePageComponent } from './time-line-page/time-line-page.component';
-import { MemoPageComponent } from './memo-page/memo-page.component'
+import { MemoPageComponent } from './memo-page/memo-page.component';
+import { MemoViewerComponent } from './memo-viewer/memo-viewer.component';
+import { TimeLineViewerComponent } from './time-line-viewer/time-line-viewer.component';
+import { MemoViewerRowComponent } from './memo-viewer-row/memo-viewer-row.component'
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { MemoPageComponent } from './memo-page/memo-page.component'
     UploadTaskFriendsComponent,
     TimeLinePageComponent,
     MemoPageComponent,
+    MemoViewerComponent,
+    TimeLineViewerComponent,
+    MemoViewerRowComponent,
   ],
   imports: [
     BrowserModule,

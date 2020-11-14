@@ -1,3 +1,5 @@
+<hr>
+
 <div class="columns">
   <div class="column is-1"></div>
   <div class="column"><h2>Afbeelding</h2></div>
@@ -5,5 +7,6 @@
   <div class="column"><h2>Verwijderen</h2></div>
 </div>
 
-<app-memo-viewer-row></app-memo-viewer-row>
-<app-memo-viewer-row></app-memo-viewer-row>
+<div *ngFor="let file of file$ | async">
+  <app-memo-viewer-row [file]="file"></app-memo-viewer-row>
+</div>

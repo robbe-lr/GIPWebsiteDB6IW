@@ -1,13 +1,14 @@
+<hr>
 <div class="columns">
-
   <div class="column is-1"></div>
   <div class="column"><img
-      src="https://firebasestorage.googleapis.com/v0/b/testgip-7aa68.appspot.com/o/userFiles%2FTimeLine%2FTFDdW1wOpnPlsliEQJkwpLv5VOt1%2Fimages%2F1605285354557_Afbeelding.png?alt=media&token=baf9be06-58d6-4fbd-afe1-b2550ee2a484">
+      [src]="file.downloadURL">
   </div>
   <div class="column">
+    <h5>{{currentLabel}}</h5>
     <div class="control">
-      <input class="input" type="text" placeholder="Text input" value="bulma">
-    </div><br><button class="button is-primary" >OK!</button>
+      <input class="input" type="text" placeholder="verander label van afbeelding" (keyup)="onKey($event)" >
+    </div><br><button class="button is-primary" (click)="updateLabel()">OK!</button>
   </div>
-  <div class="column"><button class="button is-danger">Verwijder deze afbeelding</button></div>
+  <div class="column"><button class="button is-danger" (click)="delete()">Verwijder deze afbeelding</button></div>
 </div>

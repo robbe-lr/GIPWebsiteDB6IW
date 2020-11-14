@@ -6,4 +6,5 @@ export interface file {
   type?: string,
   deleted?: boolean,
   id?: string,
+  label?: string,
 }

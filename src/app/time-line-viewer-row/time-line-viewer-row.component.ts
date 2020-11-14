@@ -6,28 +6,28 @@ import { Observable } from 'rxjs';
 import { fileURLToPath } from 'url';
 
 @Component({
-  selector: 'app-memo-viewer-row',
-  templateUrl: './memo-viewer-row.component.html',
-  styleUrls: ['./memo-viewer-row.component.scss']
+  selector: 'app-time-line-viewer-row',
+  templateUrl: './time-line-viewer-row.component.html',
+  styleUrls: ['./time-line-viewer-row.component.scss']
 })
-export class MemoViewerRowComponent implements OnInit {
-
+export class TimeLineViewerRowComponent implements OnInit {
   fileRef: AngularFirestoreCollection<file>;
   file$: Observable<file[]>
   uid: string;
   @Input() file: file;
-  currentLabel: string
+  currentLabel: string;
+  currentDate: string = '2018-05';
   labelVal: string = undefined;
+  dateVal: string = undefined;
 
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
     console.log('file', this.file)
   }
 
   deleteFileData(file: file) {
-    const fileRefDB: AngularFirestoreDocument<file> = this.db.doc(`files/Memo/files/${file.id}`);
+    const fileRefDB: AngularFirestoreDocument<file> = this.db.doc(`files/TimeLine/files/${file.id}`);
     const fileRefSt = this.storage.ref(file.path);
     fileRefSt.delete();
-
 
     return fileRefDB.delete();
   }
@@ -42,14 +42,26 @@ export class MemoViewerRowComponent implements OnInit {
   onKey(event) { this.labelVal = event.target.value; }
 
   updateLabel() {
-    console.log('hi', this.labelVal);
     if (this.labelVal != undefined) {
-      this.db.doc(`files/Memo/files/${this.file.id}`).update({ label: this.labelVal });
+      this.db.doc(`files/TimeLine/files/${this.file.id}`).update({ label: this.labelVal });
     }
   }
 
   ngOnInit(): void {
     this.currentLabel = this.file.label;
+    if(this.file.date != null ) {
+    this.currentDate = this.file.date;
+    } else {
+      this.currentDate = "selecteer een datum"
+    }
   }
+
+  changeDate(event) { this.dateVal = event.target.value;  }
+
+  updateDate() {
+    if (this.dateVal != undefined) {
+      this.db.doc(`files/TimeLine/files/${this.file.id}`).update({ date: this.dateVal });
+    }
+    }
 
 }

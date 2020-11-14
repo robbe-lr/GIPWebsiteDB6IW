@@ -4,7 +4,7 @@ export interface file {
   path?: string,
   uid?: string,
   type?: string,
-  deleted?: boolean,
   id?: string,
   label?: string,
+  date?: string,
 }

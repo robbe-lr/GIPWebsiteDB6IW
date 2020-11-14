@@ -34,7 +34,7 @@ export class UploadTaskComponent implements OnInit {
   ngOnInit() {
     if (this.destination == "memo") {
       this.destinationDB = 'Memo';
-    } else if (this.destination == "tijdslijn") {
+    } else if (this.destination == "tijdlijn") {
       this.destinationDB = 'TimeLine';
     }
     this.uid = localStorage.getItem('uid');
@@ -79,7 +79,7 @@ export class UploadTaskComponent implements OnInit {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         this.fileId = this.db.createId();
         
-        this.db.doc(`files/${this.destinationDB}/files/${this.fileId}`).set({label: 'Voeg een label toe!', id: this.fileId, deleted: false, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
+        this.db.doc(`files/${this.destinationDB}/files/${this.fileId}`).set({label: 'Voeg een label toe!', id: this.fileId, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
       }),
     );
   }

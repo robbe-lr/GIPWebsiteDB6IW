@@ -28,7 +28,8 @@ import { TimeLinePageComponent } from './time-line-page/time-line-page.component
 import { MemoPageComponent } from './memo-page/memo-page.component';
 import { MemoViewerComponent } from './memo-viewer/memo-viewer.component';
 import { TimeLineViewerComponent } from './time-line-viewer/time-line-viewer.component';
-import { MemoViewerRowComponent } from './memo-viewer-row/memo-viewer-row.component'
+import { MemoViewerRowComponent } from './memo-viewer-row/memo-viewer-row.component';
+import { TimeLineViewerRowComponent } from './time-line-viewer-row/time-line-viewer-row.component'
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MemoViewerRowComponent } from './memo-viewer-row/memo-viewer-row.compon
     MemoViewerComponent,
     TimeLineViewerComponent,
     MemoViewerRowComponent,
+    TimeLineViewerRowComponent,
   ],
   imports: [
     BrowserModule,

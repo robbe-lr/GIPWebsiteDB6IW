@@ -1,0 +1,19 @@
+<hr>
+<div class="columns">
+  <div class="column is-1"></div>
+  <div class="column is-3"><img [src]="file.downloadURL">
+  </div>
+  <div class="column">
+    <h5>{{currentLabel}}</h5>
+    <div class="control">
+      <input class="input" type="text" placeholder="verander label van afbeelding" (keyup)="onKey($event)">
+    </div><br><button class="button is-primary" (click)="updateLabel()">OK!</button>
+  </div>
+  <div class="column">
+    <h5>{{currentDate}}</h5>
+    <div class="control">
+    <input type="month" class="input" (change)="changeDate($event)" [value]="currentDate"></div><br>
+    <button class="button is-primary" (click)="updateDate()">OK!</button>
+  </div>
+  <div class="column"><br><button class="button is-danger" (click)="delete()">Verwijder deze afbeelding</button></div>
+</div>

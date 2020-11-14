@@ -14,12 +14,12 @@ export class NavbarComponent {
   toggleNav() {
     this.navIsActive = !this.navIsActive
   }
-  dropZoneLink() {
-    this.AppComponent.myDropZoneIsActive = true;
-    this.AppComponent.vriendenIsActive = false;
+  memoLink() {
+    this.AppComponent.memoIsActive = true;
+    this.AppComponent.timeLineIsActive = false;
   }
-  vriendenLink() {
-    this.AppComponent.myDropZoneIsActive = false;
-    this.AppComponent.vriendenIsActive = true;
+  timeLineLink() {
+    this.AppComponent.memoIsActive = false;
+    this.AppComponent.timeLineIsActive = true;
   }
 }

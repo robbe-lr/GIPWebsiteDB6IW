@@ -25,7 +25,7 @@ export class TimeLineViewerRowComponent implements OnInit {
   }
 
   deleteFileData(file: file) {
-    const fileRefDB: AngularFirestoreDocument<file> = this.db.doc(`files/TimeLine/files/${file.id}`);
+    const fileRefDB: AngularFirestoreDocument<file> = this.db.doc(`files/${file.id}`);
     const fileRefSt = this.storage.ref(file.path);
     fileRefSt.delete();
 
@@ -43,7 +43,7 @@ export class TimeLineViewerRowComponent implements OnInit {
 
   updateLabel() {
     if (this.labelVal != undefined) {
-      this.db.doc(`files/TimeLine/files/${this.file.id}`).update({ label: this.labelVal });
+      this.db.doc(`/files/${this.file.id}`).update({ label: this.labelVal });
     }
   }
 
@@ -60,7 +60,7 @@ export class TimeLineViewerRowComponent implements OnInit {
 
   updateDate() {
     if (this.dateVal != undefined) {
-      this.db.doc(`files/TimeLine/files/${this.file.id}`).update({ date: this.dateVal });
+      this.db.doc(`/files/${this.file.id}`).update({ date: this.dateVal });
     }
     }
 

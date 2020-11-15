@@ -8,7 +8,8 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   public memoIsActive: boolean = false;
-  public timeLineIsActive: boolean = true;
+  public timeLineIsActive: boolean = false;
+  public dropZoneIsActive: boolean = true;
   constructor(public auth: AuthService) {}
 
   test() {

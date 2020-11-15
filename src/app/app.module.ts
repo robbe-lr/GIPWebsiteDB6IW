@@ -29,7 +29,8 @@ import { MemoPageComponent } from './memo-page/memo-page.component';
 import { MemoViewerComponent } from './memo-viewer/memo-viewer.component';
 import { TimeLineViewerComponent } from './time-line-viewer/time-line-viewer.component';
 import { MemoViewerRowComponent } from './memo-viewer-row/memo-viewer-row.component';
-import { TimeLineViewerRowComponent } from './time-line-viewer-row/time-line-viewer-row.component'
+import { TimeLineViewerRowComponent } from './time-line-viewer-row/time-line-viewer-row.component';
+import { DropZonePageComponent } from './drop-zone-page/drop-zone-page.component'
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TimeLineViewerRowComponent } from './time-line-viewer-row/time-line-vie
     TimeLineViewerComponent,
     MemoViewerRowComponent,
     TimeLineViewerRowComponent,
+    DropZonePageComponent,
   ],
   imports: [
     BrowserModule,

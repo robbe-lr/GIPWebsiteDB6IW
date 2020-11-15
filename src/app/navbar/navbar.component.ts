@@ -17,9 +17,16 @@ export class NavbarComponent {
   memoLink() {
     this.AppComponent.memoIsActive = true;
     this.AppComponent.timeLineIsActive = false;
+    this.AppComponent.dropZoneIsActive = false;
   }
   timeLineLink() {
     this.AppComponent.memoIsActive = false;
     this.AppComponent.timeLineIsActive = true;
+    this.AppComponent.dropZoneIsActive = false;
+  }
+  dropZoneLink() {
+    this.AppComponent.memoIsActive = false;
+    this.AppComponent.timeLineIsActive = false;
+    this.AppComponent.dropZoneIsActive = true;
   }
 }

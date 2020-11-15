@@ -44,6 +44,8 @@ export class UploadTaskComponent implements OnInit {
   }
 
   startUpload() {
+    if (this.file.size < 2200000 ) {
+    console.log(this.file.size)
     var path = '';
     console.log(this.file.type)
     if (this.file.type.localeCompare("video") == 1) {
@@ -79,9 +81,12 @@ export class UploadTaskComponent implements OnInit {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         this.fileId = this.db.createId();
         
-        this.db.doc(`files/${this.destinationDB}/files/${this.fileId}`).set({date: ' selecteer een datum',label: 'Voeg een label toe!', id: this.fileId, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
+        this.db.doc(`files/${this.fileId}`).set({date: ' selecteer een datum',label: 'Voeg een label toe!', id: this.fileId, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
       }),
     );
+    } else {
+      console.log("bestand is te groot");
+    }
   }
 
   isActive(snapshot) {

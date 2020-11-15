@@ -9,6 +9,9 @@
 
   <div id="navbarBasicExample" class="navbar-menu" [ngClass]="{'is-active': navIsActive}">
     <div class="navbar-start">
+      <a class="navbar-item" (click)="dropZoneLink()">
+        Drop Zone
+      </a>
       <a class="navbar-item" (click)="memoLink()">
         Memory
       </a>

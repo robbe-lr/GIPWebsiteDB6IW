@@ -431,7 +431,7 @@ class UploadTaskComponent {
         Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["finalize"])(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.downloadURL = yield ref.getDownloadURL().toPromise();
             this.fileId = this.db.createId();
-            this.db.doc(`files/${this.destinationDB}/files/${this.fileId}`).set({ label: 'Voeg een label toe!', id: this.fileId, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
+            this.db.doc(`files/${this.destinationDB}/files/${this.fileId}`).set({ date: ' selecteer een datum', label: 'Voeg een label toe!', id: this.fileId, type: this.type, uid: this.uid, downloadURL: this.downloadURL, path, originalName: this.file.name });
         })));
     }
     isActive(snapshot) {

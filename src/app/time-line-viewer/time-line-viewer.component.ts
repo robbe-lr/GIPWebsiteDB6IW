@@ -20,7 +20,7 @@ export class TimeLineViewerComponent implements OnInit {
   
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
     this.uid = localStorage.getItem('uid')
-    this.fileRef = this.db.collection('files/TimeLine/files', ref => ref.where('uid', '==', this.uid).orderBy("date"));
+    this.fileRef = this.db.collection('files', ref => ref.where('uid', '==', this.uid).orderBy("date"));
     this.file$ = this.fileRef.valueChanges();
     console.log(this.file$)
   }
